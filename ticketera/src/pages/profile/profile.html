@@ -1,0 +1,51 @@
+<ion-content>
+
+  <div class="background_purple"></div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="profile_image">
+          <img [src]="user?.image" alt="">
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="mt_10">
+      <ion-col text-center class="fs_22">
+        <div class="ff_rm text_white" *ngIf="user?.name != null">{{ user?.name }} </div>
+        <div class="ff_rm text_white" *ngIf="user?.lastname != null">{{ user?.lastname }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center class="fs_20">
+        <span class="profile_email">{{ user?.email }}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button full outline color="pink" (tap)="goMyTickets()">Ver mis entradas</button>
+      </ion-col>
+      <ion-col col-12 *ngIf="dataUserLogged && dataUserLogged.rol === 'RRPP'">
+        <button ion-button full outline color="pink" (tap)="goSellTickets()">Vender entradas</button>
+        <button ion-button outline color="pink" (tap)="goRequestBuildings()">Buscar building</button>
+      </ion-col>
+      <ion-col col-12 *ngIf="dataUserLogged && dataUserLogged.rol === 'PROMOTOR'">
+        <button ion-button full outline color="pink" (tap)="goMyBuilding()">Mis buildings</button>
+        <button ion-button full outline color="pink" (tap)="goCreateBuilding()">Crear building</button>
+        <button ion-button full outline color="pink" (tap)="goValidateTickets()">Validar Entradas</button>
+      </ion-col>
+      <ion-col col-12 *ngIf="dataUserLogged && dataUserLogged.rol === 'ADMIN'">
+        <button ion-button full outline color="pink" (tap)="goPendingCompaniesRequested()">Solicitudes de crear company</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-fab bottom right>
+    <button ion-fab (tap)="goProfileConfig()">
+      <ion-icon name="cog" role="img" aria-label="cog"></ion-icon>
+      <div class="button-effect"></div>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,13 @@
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item *ngFor="let event of events" (tap)="showEventStatistics(event)">
+      <h2>{{ event.building.name }} - {{ event.name }}</h2>
+      <p>{{ event.building.address }}</p>
+      <p>{{ event.dateToString }}</p>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
